@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="/">
+            <a className="navbar-brand" href="/">
                 <div className="">Greenbox</div>
             </a>
             <ul className="navbar-nav mr-auto">

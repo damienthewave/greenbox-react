@@ -1,9 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import ShopPage from './pages/ShopPage'
+import HomePage from './pages/HomePage'
 
 function App() {
   return (
-    <h1>Greenbox</h1>
+    <div>
+      <Navbar />
+      <div className="container mt-3">
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/order" exact component={ShopPage} />
+        </Switch>
+      </div>
+    </div>
   );
 }
 
