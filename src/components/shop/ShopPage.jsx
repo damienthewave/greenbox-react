@@ -1,6 +1,6 @@
 import React from 'react'
-import ShopItemList from '../components/shop/ShopItemList'
-import Cart from '../components/shop/Cart'
+import ShopItemList from './shop/ShopList'
+import Cart from './cart/Cart'
 
 function ShopPage() {
     return (

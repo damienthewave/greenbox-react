@@ -2,20 +2,19 @@ import React, { useEffect} from 'react'
 import { connect } from "react-redux";
 import ShopListItem from './ShopListItem'
 
-import { fetchItems } from "../../redux/shop/shopActions";
+import { fetchItems } from "../../../redux/shop/shopActions";
 
-function ShopItemList({itemData, fetchItems}) {
+function ShopList({itemData, fetchItems}) {
 
     useEffect(() => {
         fetchItems()
-    }, [])
-
+    }, [fetchItems])
 
     console.log(itemData)
     
     return (
         <div>
-            <h1>Items</h1>
+            <h3>Items</h3>
             {
                 itemData.loading? (
                     <p>Loading...</p>
@@ -47,4 +46,4 @@ const mapDispatchToProps = {
     fetchItems,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShopItemList)
+export default connect(mapStateToProps, mapDispatchToProps)(ShopList)

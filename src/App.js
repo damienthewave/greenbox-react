@@ -1,7 +1,8 @@
+import React from "react";
 import { Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import ShopPage from './pages/ShopPage'
-import HomePage from './pages/HomePage'
+import ShopPage from './components/shop/ShopPage'
+import HomePage from './components/HomePage'
 
 function App() {
   return (

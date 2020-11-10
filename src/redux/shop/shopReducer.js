@@ -1,4 +1,4 @@
-import { FETCH_ITEMS_FAILURE, FETCH_ITEMS_REQUEST, FETCH_ITEMS_SUCCESS } from "./constants";
+import { FETCH_ITEMS_FAILURE, FETCH_ITEMS_REQUEST, FETCH_ITEMS_SUCCESS, ADD_ITEM_TO_CART, DELETE_ITEM_FROM_CART } from "./constants";
 
 const initialState = {
     loading: false,
@@ -8,7 +8,21 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+    console.log(action)
+    const { cartItems, shopItems } = state
     switch (action.type){
+        case ADD_ITEM_TO_CART:
+            return{
+                ...state,
+                cartItems: [...cartItems, action.item],
+                shopItems: shopItems.filter(item => item.id!==action.item.id)
+            }
+        case DELETE_ITEM_FROM_CART:
+            return {
+                ...state,
+                cartItems: cartItems.filter(item => item.id !== action.item.id),
+                shopItems: [...shopItems, action.item]
+            }
         case FETCH_ITEMS_REQUEST:
             return{
                 ...state,

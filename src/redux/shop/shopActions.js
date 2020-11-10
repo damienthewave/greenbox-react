@@ -2,10 +2,29 @@ import {
     FETCH_ITEMS_REQUEST,
     FETCH_ITEMS_SUCCESS,
     FETCH_ITEMS_FAILURE,
+    ADD_ITEM_TO_CART,
+    DELETE_ITEM_FROM_CART
   } from "./constants";
 import { ITEMS_URL } from "../../constants/api";
 import axios from "axios";
+
   
+export const addItemToCart = (item) => {
+    const action = {
+        type: ADD_ITEM_TO_CART,
+        item,
+    };
+    return action;
+}
+
+export const deleteItemFromCart = (item) => {
+    const action = {
+        type: DELETE_ITEM_FROM_CART,
+        item,
+    };
+    return action;
+}
+
 export const fetchItems = () => {
     return (dispatch) => {
         dispatch(fetchItemsRequest());
