@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { deleteItemFromCart } from '../../../redux/shop/shopActions'
 import CartItem from './CartItem'
 
+import { calculateTotal } from '../../../utils/itemUtils'
+
 function Cart({cartItems}) {
     return (
         <div>
@@ -11,12 +13,24 @@ function Cart({cartItems}) {
             <ul className="list-group">
                 {
                     cartItems.map(
-                        item => {
-                            return <CartItem key={item.id} item={item} />
+                        cartItem => {
+                            return <CartItem key={cartItem.item.id} item={cartItem.item} amount={cartItem.amount} />
                         }
                     )
                 }
-            </ul>
+                </ul>
+            <div className="mt-3">
+                {
+                    cartItems && cartItems.length!==0? (
+                        <div>
+                            <div>Total price: ${calculateTotal(cartItems)}</div>
+                            <button className="btn btn-success">Proceed</button>
+                        </div>
+                    ):(
+                        <p>You have no items in the cart. Add some!</p>
+                    )
+                }
+            </div>
         </div>
     )
 }

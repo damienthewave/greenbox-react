@@ -7,13 +7,14 @@ function ShopPage() {
         <div>
             <h1>Shop</h1>
             <div className="row">
-                <div className="col mr-auto">
+                <div className="col-7">
                     <ShopItemList />
                 </div>
-                <div className="col mr-auto">
+                <div className="col-5">
                     <Cart />
                 </div>
             </div>
+            <br/>
         </div>
     )
 }

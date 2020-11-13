@@ -9,10 +9,11 @@ import { ITEMS_URL } from "../../constants/api";
 import axios from "axios";
 
   
-export const addItemToCart = (item) => {
+export const addItemToCart = (item, amount) => {
     const action = {
         type: ADD_ITEM_TO_CART,
         item,
+        amount
     };
     return action;
 }

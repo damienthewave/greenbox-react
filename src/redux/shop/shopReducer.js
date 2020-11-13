@@ -12,15 +12,19 @@ const reducer = (state = initialState, action) => {
     const { cartItems, shopItems } = state
     switch (action.type){
         case ADD_ITEM_TO_CART:
+            var cartItem = {
+                item: action.item,
+                amount: action.amount
+            }
             return{
                 ...state,
-                cartItems: [...cartItems, action.item],
+                cartItems: [...cartItems, cartItem],
                 shopItems: shopItems.filter(item => item.id!==action.item.id)
             }
         case DELETE_ITEM_FROM_CART:
             return {
                 ...state,
-                cartItems: cartItems.filter(item => item.id !== action.item.id),
+                cartItems: cartItems.filter(cartItem => cartItem.item.id !== action.item.id),
                 shopItems: [...shopItems, action.item]
             }
         case FETCH_ITEMS_REQUEST:

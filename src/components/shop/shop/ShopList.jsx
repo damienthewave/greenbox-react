@@ -9,8 +9,6 @@ function ShopList({itemData, fetchItems}) {
     useEffect(() => {
         fetchItems()
     }, [fetchItems])
-
-    console.log(itemData)
     
     return (
         <div>
