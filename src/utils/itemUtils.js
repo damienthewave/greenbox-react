@@ -32,10 +32,3 @@ export function calculateTotal(cartItems){
 export function getStep(item) {
     return item.collectionType === "WEIGHT" ? 0.1 : 1
 }
-
-//for validating further on
-export function isValid(item, amount) {
-    if (item.collectionType === "QUANTITY") {
-        return Number.isInteger(amount)
-    } else return true
-}

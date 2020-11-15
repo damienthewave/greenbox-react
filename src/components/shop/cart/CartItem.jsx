@@ -4,9 +4,19 @@ import { connect } from 'react-redux'
 import { deleteItemFromCart } from '../../../redux/shop/shopActions'
 import { calculateSubtotal, itemToUnit } from '../../../utils/itemUtils'
 
-function CartItem({item, amount, deleteItemFromCart}) {
+function CartItem({item, amount, deleteItemFromCart, delButton = true}) {
 
     let price = calculateSubtotal(item, amount)
+
+    const deleteButton = delButton? (
+        <div className="col-2">
+            <div
+                className="btn btn-danger"
+                onClick={() => deleteItemFromCart(item)}>
+                <p className="align-middle">&#x2715;</p>
+            </div>
+        </div>
+    ) : <div></div>
 
     return (
         <div className="card mt-3">
@@ -21,13 +31,9 @@ function CartItem({item, amount, deleteItemFromCart}) {
                             <div>${price}</div>
                         </div>
                     </div>
-                    <div className="col square">
-                        <div
-                            className="list-item delete-button btn btn-danger"
-                            onClick={() => deleteItemFromCart(item)}>
-                            <p className="align-middle">&#x2715;</p>
-                        </div>
-                    </div>
+                    {
+                        deleteButton
+                    }
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import ShopPage from './components/shop/ShopPage'
 import HomePage from './components/HomePage'
 import Footer from "./components/Footer";
+import OrderShippingPage from "./components/shop/order/OrderShippingPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/order" exact component={ShopPage} />
+          <Route path="/order/shipping" exact component={OrderShippingPage} />
         </Switch>
         {/* <Footer /> */}
       </div>

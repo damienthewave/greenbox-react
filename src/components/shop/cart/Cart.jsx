@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { deleteItemFromCart } from '../../../redux/shop/shopActions'
-import CartItem from './CartItem'
-
+import CartList from './CartList'
 import { calculateTotal } from '../../../utils/itemUtils'
 
 function Cart({cartItems}) {
@@ -12,7 +12,9 @@ function Cart({cartItems}) {
         return cartItems && cartItems.length!==0? (
             <div>
                 <div>Total price: ${calculateTotal(cartItems)}</div>
-                <button className="btn btn-primary">Proceed</button>
+                <Link to="/order/shipping">
+                    <button className="btn btn-primary">Proceed</button>
+                </Link>
             </div>
         ):(
             <p>You have no items in the cart. Add some!</p>
@@ -22,17 +24,7 @@ function Cart({cartItems}) {
     return (
         <div>
             <h3>Cart</h3>
-            <ul className="list-group">
-                {
-                    cartItems.map(
-                        cartItem => {
-                            return <CartItem key={cartItem.item.id} 
-                                            item={cartItem.item}
-                                            amount={cartItem.amount} />
-                        }
-                    )
-                }
-                </ul>
+            <CartList cartItems={cartItems}/>
             <div className="mt-3">
                 {
                     renderCartInfo()
@@ -43,7 +35,6 @@ function Cart({cartItems}) {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
       cartItems: state.shopItems.cartItems,
     };

@@ -1,5 +1,5 @@
 import React from 'react'
-import ShopItemList from './shop/ShopList'
+import ShopItemList from './items/ShopList'
 import Cart from './cart/Cart'
 
 function ShopPage() {
