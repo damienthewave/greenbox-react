@@ -7,6 +7,18 @@ import CartItem from './CartItem'
 import { calculateTotal } from '../../../utils/itemUtils'
 
 function Cart({cartItems}) {
+
+    const renderCartInfo = () => {
+        return cartItems && cartItems.length!==0? (
+            <div>
+                <div>Total price: ${calculateTotal(cartItems)}</div>
+                <button className="btn btn-primary">Proceed</button>
+            </div>
+        ):(
+            <p>You have no items in the cart. Add some!</p>
+        )
+    }
+
     return (
         <div>
             <h3>Cart</h3>
@@ -14,21 +26,16 @@ function Cart({cartItems}) {
                 {
                     cartItems.map(
                         cartItem => {
-                            return <CartItem key={cartItem.item.id} item={cartItem.item} amount={cartItem.amount} />
+                            return <CartItem key={cartItem.item.id} 
+                                            item={cartItem.item}
+                                            amount={cartItem.amount} />
                         }
                     )
                 }
                 </ul>
             <div className="mt-3">
                 {
-                    cartItems && cartItems.length!==0? (
-                        <div>
-                            <div>Total price: ${calculateTotal(cartItems)}</div>
-                            <button className="btn btn-success">Proceed</button>
-                        </div>
-                    ):(
-                        <p>You have no items in the cart. Add some!</p>
-                    )
+                    renderCartInfo()
                 }
             </div>
         </div>

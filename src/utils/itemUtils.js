@@ -1,9 +1,14 @@
+export const collectionTypes = {
+    WEIGHT: 'WEIGHT',
+    QUANTITY: 'QUANTITY'
+}
+
 export function itemToUnit(item) {
     switch (item.collectionType) {
-        case "WEIGHT":
-            return "kg"
-        case "QUANTITY":
+        case collectionTypes.QUANTITY:
             return "pc."
+        case collectionTypes.WEIGHT:
+            return "kg"
         default:
             return "";
     }
