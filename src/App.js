@@ -1,10 +1,10 @@
-import React from "react";
-import { Route, Switch } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import ShopPage from './components/shop/ShopPage'
-import HomePage from './components/HomePage'
-import Footer from "./components/Footer";
-import OrderShippingPage from "./components/shop/order/OrderShippingPage";
+import React from "react"
+import { Route, Switch } from "react-router-dom"
+import Navbar from "./components/Navbar"
+import ShopPage from "./components/shop/ShopPage"
+import HomePage from "./components/HomePage"
+import Footer from "./components/Footer"
+import OrderShippingPage from "./components/shop/order/OrderShippingPage"
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         {/* <Footer /> */}
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
