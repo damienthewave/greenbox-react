@@ -5,14 +5,15 @@ import { Link } from "react-router-dom"
 import { deleteItemFromCart } from "../../../redux/shop/shopActions"
 import CartList from "./CartList"
 import { calculateTotal } from "../../../utils/itemUtils"
+import { SHIPPING } from "../../../constants/routes"
 
 function Cart({ cartItems }) {
   const renderCartInfo = () => {
     return cartItems && cartItems.length !== 0 ? (
       <div>
         <div>Total price: ${calculateTotal(cartItems)}</div>
-        <Link to="/order/shipping">
-          <button className="btn btn-primary">Proceed</button>
+        <Link to={SHIPPING}>
+          <button className="btn btn-success">Proceed</button>
         </Link>
       </div>
     ) : (

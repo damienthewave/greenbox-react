@@ -1,9 +1,8 @@
 export function getPositionsFromCart(cartItems) {
-  console.log(cartItems)
   let positions = cartItems.map((cartItem) => {
     return {
       itemId: cartItem.item.id,
-      amount: +cartItem.amount,
+      amount: cartItem.amount,
     }
   })
   return positions

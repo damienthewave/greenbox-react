@@ -5,11 +5,6 @@ import { prepareOrder } from "../../../utils/orderUtils"
 import { placeOrder } from "../../../redux/shop/order/orderActions"
 
 import CartList from "../cart/CartList"
-import {
-  addParam,
-  getRouteForItemById,
-  getRouteForOrder,
-} from "../../../constants/routes"
 
 function OrderShippingPage({ cartItems, placeOrder, orderData }) {
   const [name, setName] = useState("")
@@ -100,7 +95,10 @@ function OrderShippingPage({ cartItems, placeOrder, orderData }) {
         <p>{orderData.error}</p>
       ) : orderData.order && orderData.success ? (
         <Redirect
-          to={addParam(getRouteForOrder(orderData.order.id), "new", true)}
+          to={{
+            pathname: "/orders/" + orderData.order.id,
+            order: orderData.order,
+          }}
         />
       ) : (
         <div>

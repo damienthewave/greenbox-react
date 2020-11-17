@@ -1,6 +1,10 @@
 export const ORDERS = "/orders"
 export const ITEMS = "/items"
-export const CREATE = "/create"
+export const SHOP = "/shop"
+
+export const ITEMS_CREATE = ITEMS + "/create"
+
+export const SHIPPING = SHOP + "/shipping"
 
 export function getRouteForItem(id) {
   return ITEMS + "/" + id

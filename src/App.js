@@ -5,6 +5,9 @@ import ShopPage from "./components/shop/ShopPage"
 import HomePage from "./components/HomePage"
 import Footer from "./components/Footer"
 import OrderShippingPage from "./components/shop/order/OrderShippingPage"
+import OrderListPage from "./components/orders/OrderListPage"
+import OrderPage from "./components/orders/OrderPage"
+import { ITEMS, ITEMS_CREATE, ORDERS, SHIPPING, SHOP } from "./constants/routes"
 
 function App() {
   return (
@@ -13,10 +16,12 @@ function App() {
       <div className="container mt-3">
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/order" exact component={ShopPage} />
-          <Route path="/order/shipping" exact component={OrderShippingPage} />
+          <Route path={SHOP} exact component={ShopPage} />
+          <Route path={SHIPPING} exact component={OrderShippingPage} />
+          <Route path={ORDERS} exact component={OrderListPage} />
+          <Route path={ORDERS + "/:id"} component={OrderPage} />
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   )

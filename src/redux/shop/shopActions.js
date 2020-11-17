@@ -12,7 +12,7 @@ export const addItemToCart = (item, amount) => {
   const action = {
     type: ADD_ITEM_TO_CART,
     item,
-    amount,
+    amount: +amount,
   }
   return action
 }

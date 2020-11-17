@@ -1,7 +1,16 @@
-$primary: #2e933c;
-
 @import "~bootstrap/scss/bootstrap.scss";
+
+$leading-color: #2e933c;
+
+.leading-color {
+  background-color: $leading-color;
+}
 
 nav .navbar-brand {
   font-weight: 500;
+}
+
+div .wrap-items {
+  display: flex;
+  flex-wrap: wrap;
 }
