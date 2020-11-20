@@ -7,7 +7,8 @@ import Footer from "./components/Footer"
 import OrderShippingPage from "./components/shop/order/OrderShippingPage"
 import OrderListPage from "./components/orders/OrderListPage"
 import OrderPage from "./components/orders/OrderPage"
-import { ITEMS, ITEMS_CREATE, ORDERS, SHIPPING, SHOP } from "./constants/routes"
+import ItemPage from "./components/items/ItemPage"
+import { ITEMS, ORDERS, SHIPPING, SHOP } from "./constants/routes"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path={SHIPPING} exact component={OrderShippingPage} />
           <Route path={ORDERS} exact component={OrderListPage} />
           <Route path={ORDERS + "/:id"} component={OrderPage} />
+          <Route path={ITEMS + "/:id"} exact component={ItemPage} />
         </Switch>
         <Footer />
       </div>
