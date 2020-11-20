@@ -5,22 +5,40 @@ import { ORDERS_ALL_URL } from "../../constants/api"
 
 function OrderListPage() {
   const [orders, setOrders] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
 
   useEffect(() => {
-    axios.get(ORDERS_ALL_URL).then((orders) => {
-      setOrders(orders.data)
-    })
+    axios
+      .get(ORDERS_ALL_URL)
+      .then((orders) => {
+        setOrders(orders.data)
+        setLoading(false)
+      })
+      .catch((error) => {
+        setError(error)
+        setLoading(false)
+      })
   }, [])
 
-  const ordersToDetail = () =>
-    orders.map((order) => {
-      return <OrderDetails key={order.id} order={order} link={true} />
-    })
+  const ordersToDetail = orders.map((order) => {
+    return <OrderDetails key={order.id} order={order} link={true} />
+  })
 
   return (
     <div>
-      <h1 className="mt-3">Orders</h1>
-      <div>{orders ? ordersToDetail() : <div>Loading...</div>}</div>
+      <h1>Orders</h1>
+      <div>
+        {loading ? (
+          <p>Loading...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : orders ? (
+          <div>{ordersToDetail}</div>
+        ) : (
+          <div></div>
+        )}
+      </div>
     </div>
   )
 }
