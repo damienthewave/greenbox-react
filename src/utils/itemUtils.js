@@ -3,6 +3,9 @@ export const colTypes = {
   QUANTITY: "QUANTITY",
 }
 
+//export const COLLECTION_TYPES = Object.keys(colTypes)
+export const COLLECTION_TYPES = ["WEIGHT", "QUANTITY"]
+
 export function itemToUnit(item) {
   switch (item.collectionType) {
     case colTypes.QUANTITY:
