@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
-import { ITEMS_URL } from "../../constants/api"
+import { ITEMS_URL, ITEMS_ALL_URL } from "../../constants/api"
 import ItemCard from "./ItemCard"
 import { ITEMS_CREATE } from "../../constants/routes"
 
-function ItemListPage() {
+function ItemListPage({ history }) {
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
+  let searchParams = new URLSearchParams(history.location.search)
+  let availableOnly = searchParams.get("availableOnly")
+
   useEffect(() => {
+    let url = availableOnly == "true" ? ITEMS_URL : ITEMS_ALL_URL
+    console.log(url)
     axios
-      .get(ITEMS_URL)
+      .get(url)
       .then((response) => {
         setItems(response.data)
         setLoading(false)
@@ -39,7 +44,7 @@ function ItemListPage() {
         ) : items && items.length ? (
           <div>
             {items.map((item) => (
-              <ItemCard link={true} item={item} />
+              <ItemCard key={item.id} item={item} />
             ))}
           </div>
         ) : (
