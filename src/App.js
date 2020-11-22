@@ -7,7 +7,6 @@ import Footer from "./components/Footer"
 import OrderShippingPage from "./components/shop/order/OrderShippingPage"
 import OrderListPage from "./components/orders/OrderListPage"
 import OrderPage from "./components/orders/OrderPage"
-import ItemPage from "./components/items/ItemPage"
 import ItemListPage from "./components/items/ItemListPage"
 import { ITEMS, ITEMS_CREATE, ORDERS, SHIPPING, SHOP } from "./constants/routes"
 import NotFoundPage from "./components/NotFoundPage"
@@ -26,7 +25,6 @@ function App() {
           <Route path={ORDERS + "/:id"} component={OrderPage} />
           <Route path={ITEMS} exact component={ItemListPage} />
           <Route path={ITEMS_CREATE} exact component={ItemCreatePage} />
-          <Route path={ITEMS + "/:id"} exact component={ItemPage} />
           <Route component={NotFoundPage} />
         </Switch>
         <Footer />

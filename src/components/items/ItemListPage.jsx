@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import axios from "axios"
 import { ITEMS_URL } from "../../constants/api"
 import ItemCard from "./ItemCard"
+import { ITEMS_CREATE } from "../../constants/routes"
 
 function ItemListPage() {
   const [items, setItems] = useState([])
@@ -24,6 +26,11 @@ function ItemListPage() {
   return (
     <div>
       <h1>Items</h1>
+      <button className="btn btn-primary">
+        <Link className="white-link" to={ITEMS_CREATE}>
+          Create a new item
+        </Link>
+      </button>
       <div>
         {loading ? (
           <p>Loading...</p>
