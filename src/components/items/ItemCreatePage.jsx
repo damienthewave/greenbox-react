@@ -4,6 +4,7 @@ import axios from "axios"
 import { COLLECTION_TYPES } from "../../utils/itemUtils"
 import { ITEMS_CREATE_URL } from "../../constants/api"
 import { getRouteForItem } from "../../constants/routes"
+import ItemCard from "./ItemCard"
 
 function ItemCreatePage() {
   const [name, setName] = useState("")
@@ -98,7 +99,10 @@ function ItemCreatePage() {
       ) : error ? (
         <p>{error.message}</p>
       ) : item ? (
-        <Redirect to={getRouteForItem(item.id)} />
+        <div>
+          <p className="text-success">Item has been successfully created!</p>
+          <ItemCard item={item} />
+        </div>
       ) : (
         <div>
           <h1>Create a new item</h1>

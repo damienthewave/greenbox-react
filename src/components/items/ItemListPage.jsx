@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import axios from "axios"
 import { ITEMS_URL, ITEMS_ALL_URL } from "../../constants/api"
 import ItemCard from "./ItemCard"
+import { ITEMS_CREATE } from "../../constants/routes"
 
 function ItemListPage({ history }) {
   const [items, setItems] = useState([])
@@ -40,6 +41,9 @@ function ItemListPage({ history }) {
   return (
     <div>
       <h1>Items</h1>
+      <Link className="white-link" to={ITEMS_CREATE}>
+        <button className="btn btn-primary">Add an item</button>
+      </Link>
       {renderFilterLink()}
       <div>
         {loading ? (
