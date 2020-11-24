@@ -41,10 +41,12 @@ function ItemListPage({ history }) {
   return (
     <div>
       <h1>Items</h1>
-      <Link className="white-link" to={ITEMS_CREATE}>
-        <button className="btn btn-primary">Add an item</button>
-      </Link>
-      {renderFilterLink()}
+      <div>
+        <Link className="white-link" to={ITEMS_CREATE}>
+          <button className="btn btn-primary">Add an item</button>
+        </Link>
+        {renderFilterLink()}
+      </div>
       <div>
         {loading ? (
           <p>Loading...</p>

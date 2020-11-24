@@ -3,6 +3,7 @@ import OrderDetails from "./OrderDetails"
 import axios from "axios"
 import { getOrderByIdUrl } from "../../constants/api"
 import PositionDetails from "./PositionDetails"
+import { completeOrderByIdUrl } from "../../constants/api"
 
 function OrderPage({ match }) {
   const [order, setOrder] = useState({})
@@ -28,6 +29,20 @@ function OrderPage({ match }) {
       })
   }
 
+  function markOrderAsCompleted() {
+    setLoading(true)
+    axios
+      .patch(completeOrderByIdUrl(order.id))
+      .then((response) => {
+        setOrder(response.data)
+        setLoading(false)
+      })
+      .catch((error) => {
+        setLoading(false)
+        setError(error)
+      })
+  }
+
   const renderPositions = () => {
     return order.positions.map((position) => {
       return <PositionDetails key={position.item.id} position={position} />
@@ -41,11 +56,26 @@ function OrderPage({ match }) {
       ) : error ? (
         <p>{error}</p>
       ) : (
-        <div className="row">
-          <div className="col-7">
-            <OrderDetails order={order} />
+        <div>
+          <div className="row">
+            <div className="col-7">
+              <OrderDetails order={order} />
+            </div>
+            <div className="col">{renderPositions()}</div>
           </div>
-          <div className="col">{renderPositions()}</div>
+          <br />
+          <div className="container row">
+            {!order.completed ? (
+              <button
+                className="btn btn-success"
+                onClick={() => markOrderAsCompleted(order.id)}
+              >
+                Complete
+              </button>
+            ) : (
+              <p></p>
+            )}
+          </div>
         </div>
       )}
     </div>
