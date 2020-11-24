@@ -1,5 +1,5 @@
 import React from "react"
-import { ITEMS, ORDERS, SHOP } from "../constants/routes"
+import { ITEMS, ORDERS, SHOP, SUMMARY } from "../constants/routes"
 
 function Navbar() {
   return (
@@ -21,6 +21,11 @@ function Navbar() {
         <li className="nav-item">
           <a className="nav-link" href={ORDERS}>
             Orders
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href={SUMMARY}>
+            Summary
           </a>
         </li>
       </ul>
