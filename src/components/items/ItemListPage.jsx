@@ -45,21 +45,22 @@ function ItemListPage({ history }) {
         <Link className="white-link" to={ITEMS_CREATE}>
           <button className="btn btn-primary">Add an item</button>
         </Link>
-        {renderFilterLink()}
-      </div>
-      <div>
+        <br />
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
         ) : items && items.length ? (
           <div>
-            {items.map((item) => (
-              <ItemCard key={item.id} item={item} />
-            ))}
+            <div>{renderFilterLink()}</div>
+            <div>
+              {items.map((item) => (
+                <ItemCard key={item.id} item={item} />
+              ))}
+            </div>
           </div>
         ) : (
-          <p></p>
+          <p>No items</p>
         )}
       </div>
     </div>

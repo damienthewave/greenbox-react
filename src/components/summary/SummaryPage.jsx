@@ -29,7 +29,7 @@ function SummaryPage() {
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
-        ) : summary && summary.collectedItems.length !== 0 ? (
+        ) : summary && summary.collectedItems ? (
           <div>
             {summary.collectedItems.map((summaryItem) => (
               <SummaryItem
@@ -40,7 +40,7 @@ function SummaryPage() {
             <div className="mt-3">Total cost: ${summary.totalPrice}</div>
           </div>
         ) : (
-          <div></div>
+          <div>{summary}</div>
         )}
       </div>
     </div>

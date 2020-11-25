@@ -43,16 +43,18 @@ function OrderListPage({ history }) {
   return (
     <div>
       <h1>Orders</h1>
-      {renderFilterLink()}
       <div>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
           <p>{error}</p>
-        ) : orders ? (
-          <div>{ordersToDetail}</div>
+        ) : orders && orders.length !== 0 ? (
+          <div>
+            {renderFilterLink()}
+            <div>{ordersToDetail}</div>
+          </div>
         ) : (
-          <div></div>
+          <div>No orders</div>
         )}
       </div>
     </div>
